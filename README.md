@@ -5,7 +5,7 @@
 
 - **Real-time Tax Calculations**: Instantly see your "After Harvesting" savings as you select different assets from your portfolio.
 - **Dynamic Holdings Table**: Full sorting (Asset, Value, Gains), "View All" expansion, and indeterminate selection states.
-- **Dark & Light Mode**: A premium theme system that remembers your preference and switches instantly without page flickers.
+- **Dark & Light Mode**: A premium theme system that remembers your preference and switches instantly without page flickers and you prefered theme is stored in the localStorage but due to test i have added a button to do so.
 - **Mobile Responsive**: Fully optimized for phones and tablets, with intuitive horizontal scrolling for complex financial data.
 - **Educational UI**: Contextual tooltips explaining Tax Harvesting and interactive disclaimer banners.
 
