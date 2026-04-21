@@ -46,7 +46,7 @@ export const HOLDINGS_API_RESPONSE = [
     currentPrice: 50000.22,
     totalHolding: 2.75145540184285,
     averageBuyPrice: 0.6880274617804887,
-    stcg: { balance: 2.75145540184285, gain: 59.244262152615974 },
+    stcg: { balance: 2.75145540184285, gain: -5200.45 },
     ltcg: { balance: 0, gain: 0 }
   },
   {
@@ -106,8 +106,8 @@ export const HOLDINGS_API_RESPONSE = [
     currentPrice: 0.355985,
     totalHolding: 1.4210854715202004e-14,
     averageBuyPrice: 0.07889041030290807,
-    stcg: { balance: 1.4210854715202004e-14, gain: 3.9377509565538836e-15 },
-    ltcg: { balance: 0, gain: 0 }
+    stcg: { balance: 0, gain: 0 },
+    ltcg: { balance: 1000, gain: -1500.20 }
   },
   {
     coin: "PIG",

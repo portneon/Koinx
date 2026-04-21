@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# KoinX Tax Loss Harvesting Dashboard
 
-## Getting Started
 
-First, run the development server:
+## Key Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Real-time Tax Calculations**: Instantly see your "After Harvesting" savings as you select different assets from your portfolio.
+- **Dynamic Holdings Table**: Full sorting (Asset, Value, Gains), "View All" expansion, and indeterminate selection states.
+- **Dark & Light Mode**: A premium theme system that remembers your preference and switches instantly without page flickers.
+- **Mobile Responsive**: Fully optimized for phones and tablets, with intuitive horizontal scrolling for complex financial data.
+- **Educational UI**: Contextual tooltips explaining Tax Harvesting and interactive disclaimer banners.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+##  Tech Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Framework**: Next.js 16 (App Router)
+- **Language**: JavaScript
+- **Styling**: Tailwind CSS
+- **Icons**: Lucide React
+- **Branding**: KoinX Official Logo & Favicon
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+##  Optimization Techniques
 
-## Learn More
+I've implemented several performance and UX optimizations to ensure a smooth, professional experience:
 
-To learn more about Next.js, take a look at the following resources:
+### 1. Nano-Latency Theme Switching
+Instead of re-rendering the entire React tree for theme changes, I used a **CSS Variable Architecture**. 
+- Switching themes only toggles a `data-theme` attribute on the `<html>` element.
+- All colors are mapped to variables (`--surface-card`, `--text-primary`), making transitions perfectly smooth and instant.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 2. Memoized Financial Logic
+Calculating capital gains across multiple categories (STCG/LTCG) can be heavy as selection state grows.
+- Used `useMemo` to cache pre-harvesting and post-harvesting statistics.
+- Calculations only run when the selection `selectedIds` or the `assetsData` actually changes.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 3. Virtual-Style Table Expansion
+To maintain a clean layout without overwhelming the user:
+- The Holdings Table defaults to a **Top 4** view (sorted by gains).
+- Users can toggle the full list dynamically, keeping the initial payload light and the UI focused.
 
-## Deploy on Vercel
+### 4. Responsive UX Utilities
+- **Fluid Grids**: Summary cards automatically stack on mobile but span side-by-side on desktop.
+- **Table Scroll Protection**: While the page remains vertically fluid, the complex data table uses a protected horizontal scroll container to prevent "data squishing" on narrow screens.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 5. Render Optimization
+- Used `React.memo` for `HoldingsRow` to ensure that selecting one coin doesn't trigger a re-render of every other row in the portfolio.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+##  Getting Started
+
+1. **Install dependencies**:
+   ```bash
+   npm install
+   ```
+2. **Run the development server**:
+   ```bash
+   npm run dev
+   ```
+3. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+---
+
